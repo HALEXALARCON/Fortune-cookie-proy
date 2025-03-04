@@ -4,6 +4,7 @@ import { randomItem } from './utils'
 import PhraseCard from './components/PhraseCard';
 import Button from './components/Button';
 import { img1, img2, img3, img4 } from './assets';
+import cookieSound from './assets/cookie-break.mp3'
 
 const colors = [
 	'#ff6633',
@@ -24,6 +25,10 @@ function App() {
   const [image, setimage] = useState(randomItem(images))
 
   const changePhrase = () => {
+    // Reproduce el sonido de la galleta partiéndose
+    const audio = new Audio(cookieSound);
+    audio.play();
+
     setPhrase(randomItem(phrases))
     setimage(randomItem(images))
   }
@@ -31,13 +36,13 @@ function App() {
 
   return (
     <div className='container' style={{ backgroundImage: `url('${image}')`}}>
-      <h1>Galleta De La Fortuna</h1>
+      <h1 className='title'>GALLETA DE LA FORTUNA</h1>
       < PhraseCard
         phrase={phrase.phrase}
         author={phrase.author}
       />
       <Button handlePhrase={changePhrase}>
-      🥠 PRESIONA🥠 AQUI 🥠 PARA 🥠 SACAR 🥠 NUEVA 🥠 GALLETA 🥠
+      🥠 🥠 🥠 PRESIONA AQUI PARA SACAR UNA NUEVA GALLETA 🥠 🥠 🥠
         </Button>
     </div>
   )
